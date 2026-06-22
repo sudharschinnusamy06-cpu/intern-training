@@ -1,2 +1,2 @@
 # intern-training
-Day 1 --> repo setup
+Day 1 --> core syntax and repo setup
