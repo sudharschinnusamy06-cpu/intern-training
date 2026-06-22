@@ -1,2 +1,2 @@
 # intern-training
-Day 1 --> core syntax and repo setup
+Day 1 --> Day 1 completed - CLI app with calculator, guessing game, text analyzer
