@@ -61,14 +61,13 @@ while True:
             print(f"❌ Contact '{search_name}' not found!")
 
     elif choice == "3":
-        print("\n--- UPDATE CONTACT ---")
+         print("\n--- UPDATE CONTACT ---")
 
-        n = input("Enter name to update: ").strip().capitalize()
-        found = False
+         n = input("Enter name to update: ").strip().capitalize()
+         found = False
 
-        for contact in contacts:
-            if contact["name"] == n:
-
+         for contact in contacts:
+             if contact["name"] == n:
                 print(f"\nUpdating contact: {n}")
                 print("1. Phone")
                 print("2. Email")
@@ -83,17 +82,23 @@ while True:
                     contact["email"] = input("Enter new email: ").strip().lower()
 
                 elif update_choice == "3":
-                    contact["city"] = input("Enter new city: ").capitalize()
+                    new_city = input("Enter new city: ").capitalize()
+                    if new_city in valid_cities:       
+                        contact["city"] = new_city
+                        print(f"✅ City updated!")
+                    else:
+                        print(f"❌ Invalid city! Valid: {valid_cities}")
+                        found = True
+                        break
 
                 else:
                     print("❌ Invalid choice!")
 
                 print(f"✅ '{n}' updated successfully!")
-
                 found = True
                 break
 
-        if not found:
+         if not found:
             print(f"❌ Contact '{n}' not found!")
 
     elif choice == "4":
@@ -105,6 +110,10 @@ while True:
         for contact in contacts:
             if contact["name"] == n:
                 contacts.remove(contact)
+                deleted_city = contact["city"]
+                still_used = any(c["city"] == deleted_city for c in contacts)
+                if not still_used:
+                    cities_in_use.discard(deleted_city)
 
                 print(f"✅ '{n}' deleted successfully!")
 
@@ -113,7 +122,6 @@ while True:
 
         if not found:
             print(f"❌ Contact '{n}' not found!")
-
 
 
     elif choice == "5":
@@ -129,19 +137,19 @@ while True:
                 print(f"Phone: {contact['phone']}")
                 print(f"Email: {contact['email']}")
                 print(f"City: {contact['city']}")
-            
+
             filter_city = input("\nFilter by city? (press Enter to skip): ").capitalize()
 
-        if filter_city:
-            filtered = [c for c in contacts if c["city"] == filter_city]
-
-            if len(filtered) == 0:
-                print(f"❌ No contacts in {filter_city}!")
-            else:
-                print(f"\n✅ Contacts in {filter_city}:")
-                for i, c in enumerate(filtered, 1):
-                    print(f"{i}. {c['name']} - {c['phone']}")
-
+            if filter_city:                                         
+                filtered = [c for c in contacts if c["city"] == filter_city]
+                if filtered:                                         
+                    print(f"\n✅ Contacts in {filter_city}:")
+                    for i, c in enumerate(filtered, 1):
+                        print(f"{i}. {c['name']} - {c['phone']}")
+                else:
+                    print(f"❌ No contacts in {filter_city}!")
+    
+    
     elif choice == "6":
         print("\n--- UNIQUE CITIES ---")
 
