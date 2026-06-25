@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Abi",
+        "phone": "2345678912",
+        "email": "abi@gmail.com",
+        "city": "Salem"
+    },
+    {
+        "name": "Sudhar",
+        "phone": "9876543210",
+        "email": "sudhar@gmail.com",
+        "city": "Chennai"
+    },
+    {
+        "name": "Priya",
+        "phone": "8765432109",
+        "email": "priya@gmail.com",
+        "city": "Madurai"
+    },
+    {
+        "name": "Karthik",
+        "phone": "7654321098",
+        "email": "karthik@gmail.com",
+        "city": "Salem"
+    },
+    {
+        "name": "Ravi",
+        "phone": "9988776655",
+        "email": "ravi@gmail.com",
+        "city": "Trichy"
+    }
+]
