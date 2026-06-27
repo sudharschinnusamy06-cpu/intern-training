@@ -22,9 +22,9 @@ class ContactManager:
 
     @log_action
     def list_contacts(self):
-        for contact in self.contacts:
-            print(contact)
-
+        for index, contact in enumerate(self.contacts, start=1):
+            print(f"{index}. {contact}")
+            
     def save_contacts(self, filename="contacts.json"):
         data = []
         for contact in self.contacts:

@@ -1,17 +1,25 @@
 # Day 6 — Advanced Pythonic Features
 
 ## Before (Day 5 style)
-def list_contacts(self):
-    for contact in self.contacts:
-        print(contact)
-
-## After (Day 6 style)
-# Using generator
-for contact in contact_generator(manager.contacts):
+for contact in self.contacts:
     print(contact)
 
-# Using filter + lambda
-results = filter(lambda c: keyword.lower() in c.name.lower(), contacts)
+## After (Day 6 style)
+# enumerate
+for index, contact in enumerate(self.contacts, start=1):
+    print(f"{index}. {contact}")
 
-# Using map + lambda
-names = map(lambda c: c.name.upper(), contacts)
+# filter + lambda
+filter(lambda c: keyword.lower() in c.name.lower(), contacts)
+
+# map + lambda
+map(lambda c: c.name.upper(), contacts)
+
+# generator
+def contact_generator(contacts):
+    for contact in contacts:
+        yield contact
+
+# zip
+for name, phone in zip(names, phones):
+    print(f"{name} --> {phone}")

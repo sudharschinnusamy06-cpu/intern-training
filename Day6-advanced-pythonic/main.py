@@ -2,7 +2,7 @@ from contact import Contact
 from premium_contact import PremiumContact
 from blocked_contact import BlockedContact
 from manager import ContactManager
-from utils import contact_generator , search_by_name, get_contact_names
+from utils import contact_generator , search_by_name, get_contact_names,display_name_phone
 
 manager = ContactManager()
 manager.load_contacts()
@@ -14,6 +14,7 @@ while True:
     print("4. Stream Contacts (Generator)")
     print("5. Search Contact")
     print("6. Show All Names")
+    print("7. Show Name & Phone")
     choice = input("Choose: ")
 
     if choice == "1":
@@ -52,3 +53,6 @@ while True:
         names = get_contact_names(manager.contacts)  # what goes here?
         for name in names:
             print(name)
+
+    elif choice == "7":
+        display_name_phone(manager.contacts)

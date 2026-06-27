@@ -9,3 +9,9 @@ def search_by_name(contacts, keyword):
 def get_contact_names(contacts):
     names = map(lambda c: c.name.upper(), contacts)
     return list(names)
+
+def display_name_phone(contacts):
+    names = map(lambda c: c.name, contacts)
+    phones = map(lambda c: c.phone, contacts)
+    for name, phone in zip(names, phones):
+        print(f"{name} --> {phone}")
