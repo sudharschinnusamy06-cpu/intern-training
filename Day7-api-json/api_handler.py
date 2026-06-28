@@ -2,7 +2,7 @@ import requests
 import json
 import time
 
-API_KEY = "465e24ca89c2412b0a2f97324a114689"
+API_KEY = "your_api_key_here"
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 def log_action(func):
