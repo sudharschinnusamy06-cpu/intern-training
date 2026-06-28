@@ -1,0 +1,8 @@
+City: Chennai
+Temperature: 35°C
+Condition: overcast clouds
+---
+City: Mumbai
+Temperature: 29.86°C
+Condition: scattered clouds
+---
