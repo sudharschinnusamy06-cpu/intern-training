@@ -6,6 +6,13 @@
 - Table: employees
 
 ---
+Step 1 — PATH set pannunga (every new terminal session la idha run pannanum):
+powershell$env:PATH += ";C:\Program Files\PostgreSQL\17\bin"
+Step 2 — Connect pannunga:
+powershellpsql -U postgres
+Password type pannunga, apparam:
+sql\c interndb
+Done — interndb=# prompt varum!
 
 ## Key Concepts
 
