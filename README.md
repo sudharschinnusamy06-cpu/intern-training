@@ -8,3 +8,4 @@ Day6 --> Day 6: Decorators, Generators, Lambda, map, filter added
 Day7 --> Day 7: Weather API, JSON parsing, error handling, CLI menu
 Day8 --> Day 8: Networking fundamentals - ping, tracert, nslookup with notes
 Day9 --> Day 9: HTTP REST curl commands - GET POST headers status codes
+Day10 --> Day 10: SQL basics - CREATE TABLE, INSERT, SELECT, WHERE, ORDER BY
