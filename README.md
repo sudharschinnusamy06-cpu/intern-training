@@ -9,3 +9,4 @@ Day7 --> Day 7: Weather API, JSON parsing, error handling, CLI menu
 Day8 --> Day 8: Networking fundamentals - ping, tracert, nslookup with notes
 Day9 --> Day 9: HTTP REST curl commands - GET POST headers status codes
 Day10 --> Day 10: SQL basics - CREATE TABLE, INSERT, SELECT, WHERE, ORDER BY
+Day11 --> Day 11: SQL intermediate - DELETE, UPDATE, aggregates, GROUP BY, HAVING, DISTINCT, LIKE, BETWEEN, IN
