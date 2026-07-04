@@ -12,3 +12,5 @@ Day10 --> Day 10: SQL basics - CREATE TABLE, INSERT, SELECT, WHERE, ORDER BY
 Day11 --> Day 11: SQL intermediate - DELETE, UPDATE, aggregates, GROUP BY, HAVING, DISTINCT, LIKE, BETWEEN, IN
 Day12 --> Day 12: SQL advanced - JOINs, foreign key, subquery, psycopg2 Python integration
 Day13 --> Day13: Add git practice files and .gitignore
+
+day14 ku waiting
