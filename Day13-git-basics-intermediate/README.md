@@ -12,3 +12,9 @@
 - Made changes
 - Opened PR
 - Deliberately created and resolved a merge conflict
+
+## What I Learned
+- Branching, merging, resolving conflicts manually
+- git diff to compare branches
+- git revert to safely undo commits
+- .gitignore for clean repos
