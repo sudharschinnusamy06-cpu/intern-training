@@ -14,3 +14,4 @@ Day12 --> Day 12: SQL advanced - JOINs, foreign key, subquery, psycopg2 Python i
 Day13 --> Day13: Add git practice files and .gitignore
 Day14 --> Day14: FastAPI basics - path and query parameters
 Day15 --> Day15: Request bodies, Pydantic models, full CRUD Items API
+Day16 --> Day16: Refactor Items API into routers with 404 error handling
