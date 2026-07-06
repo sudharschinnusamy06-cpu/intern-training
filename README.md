@@ -17,3 +17,4 @@ Day15 --> Day15: Request bodies, Pydantic models, full CRUD Items API
 Day16 --> Day16: Refactor Items API into routers with 404 error handling
 Day17 --> Day17: Connect FastAPI to PostgreSQL using SQLModel - full CRUD persisted to DB
 Day18 --> Day18: Add API key auth, CORS middleware, logging middleware, .env secrets
+Day19 --> Day 19: Docker basics - images, containers, Dockerfile
