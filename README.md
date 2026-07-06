@@ -20,3 +20,4 @@ Day18 --> Day18: Add API key auth, CORS middleware, logging middleware, .env sec
 Day19 --> Day 19: Docker basics - images, containers, Dockerfile
 Day20 --> Day 20: Docker Compose - multi-container FastAPI + PostgreSQL
 Day21 --> Day 21: Dockerize Task API - combined stack with .dockerignore
+Day22 --> Day 22: AWS basics - IAM user, EC2 instance, S3 bucket
