@@ -19,3 +19,4 @@ Day17 --> Day17: Connect FastAPI to PostgreSQL using SQLModel - full CRUD persis
 Day18 --> Day18: Add API key auth, CORS middleware, logging middleware, .env secrets
 Day19 --> Day 19: Docker basics - images, containers, Dockerfile
 Day20 --> Day 20: Docker Compose - multi-container FastAPI + PostgreSQL
+Day21 --> Day 21: Dockerize Task API - combined stack with .dockerignore
