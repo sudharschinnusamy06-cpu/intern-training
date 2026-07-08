@@ -22,3 +22,4 @@ Day20 --> Day 20: Docker Compose - multi-container FastAPI + PostgreSQL
 Day21 --> Day 21: Dockerize Task API - combined stack with .dockerignore
 Day22 --> Day 22: AWS basics - IAM user, EC2 instance, S3 bucket
 Day23 --> Day 23: Deployed Task API + PostgreSQL to AWS EC2
+Day24 --> Day24: final README - 14/14 tests, 95% coverage, ruff+black clean.
