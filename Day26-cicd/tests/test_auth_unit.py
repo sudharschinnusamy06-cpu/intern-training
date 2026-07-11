@@ -9,7 +9,7 @@ def test_verify_api_key_success(monkeypatch):
     monkeypatch.setattr(auth_module, "API_KEY", "test-secret-key")
 
     # Call the function directly with the CORRECT key
-    verify_api_key(x_api_key="test-secret-key")
+    verify_api_key(x_api_key="wrong-key-on-purpose")
 
 
 def test_verify_api_key_failure(monkeypatch):
