@@ -26,3 +26,4 @@ Day24 --> Day24: final README - 14/14 tests, 95% coverage, ruff+black clean.
 Day25 --> Day25: complete - response models, API versioning (/v1), request validation edge cases tested. 18/18 passing, 94% coverage
 Day26 --> Day26 complete: CI/CD pipeline with tests, Docker build, verified via deliberate break-and-fix
 Day27 --> Day27 complete: Redis caching, rate limiting, JWT auth, 21/21 tests, 95% coverage
+Day28 --> Day 28: multi-stage Docker build, RDS integration, S3 upload
