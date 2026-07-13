@@ -1,6 +1,6 @@
 from typing import Optional, List
 from datetime import datetime
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
 
 
 class User(SQLModel, table=True):
@@ -24,6 +24,8 @@ class Project(SQLModel, table=True):
 
 class ProjectMember(SQLModel, table=True):
     __tablename__ = "project_members"
+    __table_args__ = (UniqueConstraint("project_id", "user_id", name="uq_project_user"),)
+
     id: Optional[int] = Field(default=None, primary_key=True)
     project_id: int = Field(foreign_key="projects.id")
     user_id: int = Field(foreign_key="users.id")

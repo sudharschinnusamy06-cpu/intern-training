@@ -1,4 +1,4 @@
-import redis
+import redis.asyncio as redis
 import os
 
 REDIS_URL = os.getenv("REDIS_URL")

@@ -61,7 +61,7 @@ async def get_project(
             models.ProjectMember.user_id == current_user.id,
         )
     )
-    if not result.scalar_one_or_none():
+    if not result.scalars().first():
         raise HTTPException(status_code=403, detail="Not a member of this project")
 
     return project

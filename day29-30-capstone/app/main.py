@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
 from app.database import init_db
-from app.routers import auth, projects  # tasks import added later on Day 30
+from app.routers import auth, projects, tasks 
 from app.rate_limiter import limiter
 from slowapi.errors import RateLimitExceeded
 from slowapi import _rate_limit_exceeded_handler
@@ -21,7 +21,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.include_router(auth.router)
 app.include_router(projects.router)
-# app.include_router(tasks.router)  # will add on Day 30
+app.include_router(tasks.router)  
 
 
 @app.get("/")
