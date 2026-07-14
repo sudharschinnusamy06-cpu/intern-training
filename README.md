@@ -27,3 +27,4 @@ Day25 --> Day25: complete - response models, API versioning (/v1), request valid
 Day26 --> Day26 complete: CI/CD pipeline with tests, Docker build, verified via deliberate break-and-fix
 Day27 --> Day27 complete: Redis caching, rate limiting, JWT auth, 21/21 tests, 95% coverage
 Day28 --> Day 28: multi-stage Docker build, RDS integration, S3 upload
+Day29 --> Day 29: capstone setup - models, auth, projects CRUD with role-based membership, docker-compose stack working
