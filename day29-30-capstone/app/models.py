@@ -37,6 +37,6 @@ class Task(SQLModel, table=True):
     title: str
     description: Optional[str] = None
     status: str = Field(default="todo")
-    project_id: int = Field(foreign_key="projects.id")
+    project_id: int = Field(foreign_key="projects.id", index=True)
     assigned_to: Optional[int] = Field(default=None, foreign_key="users.id")
     created_at: datetime = Field(default_factory=datetime.utcnow)

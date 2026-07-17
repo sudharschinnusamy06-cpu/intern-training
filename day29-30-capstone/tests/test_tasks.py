@@ -57,5 +57,7 @@ async def test_delete_task(client):
     create_resp = await client.post(f"/projects/{project_id}/tasks/", json={"title": "Task C"}, headers=headers)
     task_id = create_resp.json()["id"]
 
+    # a regular "member" role cannot delete a task -> expect 403
+    # (this confirms role-based access control is actually enforced)
     response = await client.delete(f"/projects/{project_id}/tasks/{task_id}", headers=headers)
-    assert response.status_code == 200
+    assert response.status_code == 403

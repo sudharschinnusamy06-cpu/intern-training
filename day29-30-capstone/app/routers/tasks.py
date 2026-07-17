@@ -127,6 +127,9 @@ async def delete_task(
 ):
     await check_membership(project_id, current_user.id, session)
 
+    if current_user.role not in ("admin", "manager"):
+        raise HTTPException(status_code=403, detail="Only admin/manager can delete tasks")
+
     task = await session.get(models.Task, task_id)
     if not task or task.project_id != project_id:
         raise HTTPException(status_code=404, detail="Task not found")
