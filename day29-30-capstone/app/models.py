@@ -6,6 +6,7 @@ from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
 class User(SQLModel, table=True):
     __tablename__ = "users"
     id: Optional[int] = Field(default=None, primary_key=True)
+    full_name: Optional[str] = None
     username: str = Field(nullable=False, unique=True)
     email: str = Field(unique=True)
     hashed_password: str
@@ -18,6 +19,7 @@ class Project(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     description: Optional[str] = None
+    status: str = Field(default="active")
     owner_id: int = Field(foreign_key="users.id")
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
@@ -37,6 +39,7 @@ class Task(SQLModel, table=True):
     title: str
     description: Optional[str] = None
     status: str = Field(default="todo")
+    priority: str = Field(default="medium")
     project_id: int = Field(foreign_key="projects.id", index=True)
     assigned_to: Optional[int] = Field(default=None, foreign_key="users.id")
     created_at: datetime = Field(default_factory=datetime.utcnow)

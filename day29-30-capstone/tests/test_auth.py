@@ -4,6 +4,7 @@ import pytest
 @pytest.mark.asyncio
 async def test_register_user(client):
     response = await client.post("/auth/register", json={
+        "full_name": "Test User",
         "username": "testuser",
         "email": "testuser@example.com",
         "password": "testpass123",
@@ -18,11 +19,13 @@ async def test_register_user(client):
 @pytest.mark.asyncio
 async def test_register_duplicate_username(client):
     await client.post("/auth/register", json={
+        "full_name": "Test User",
         "username": "testuser",
         "email": "testuser@example.com",
         "password": "testpass123",
     })
     response = await client.post("/auth/register", json={
+        "full_name": "Test User",
         "username": "testuser",
         "email": "different@example.com",
         "password": "testpass123",
@@ -33,6 +36,7 @@ async def test_register_duplicate_username(client):
 @pytest.mark.asyncio
 async def test_login_success(client):
     await client.post("/auth/register", json={
+        "full_name": "Login User",
         "username": "loginuser",
         "email": "loginuser@example.com",
         "password": "testpass123",
@@ -48,6 +52,7 @@ async def test_login_success(client):
 @pytest.mark.asyncio
 async def test_login_wrong_password(client):
     await client.post("/auth/register", json={
+        "full_name": "Wrong User",
         "username": "wronguser",
         "email": "wronguser@example.com",
         "password": "testpass123",

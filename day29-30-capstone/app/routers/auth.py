@@ -19,10 +19,11 @@ async def register(user_in: schemas.UserCreate, session: AsyncSession = Depends(
         raise HTTPException(status_code=400, detail="Username already taken")
 
     new_user = models.User(
+        full_name=user_in.full_name,
         username=user_in.username,
         email=user_in.email,
         hashed_password=hash_password(user_in.password),
-        role="member",
+        role="user",
     )
     session.add(new_user)
     await session.commit()

@@ -10,6 +10,19 @@ from app.dependencies import get_current_user
 router = APIRouter(prefix="/projects", tags=["projects"])
 
 
+async def _to_project_read(project: models.Project, session: AsyncSession) -> schemas.ProjectRead:
+    owner = await session.get(models.User, project.owner_id)
+    return schemas.ProjectRead(
+        id=project.id,
+        name=project.name,
+        description=project.description,
+        status=project.status,
+        owner_id=project.owner_id,
+        owner_username=owner.username if owner else None,
+        created_at=project.created_at,
+    )
+
+
 @router.post("/", response_model=schemas.ProjectRead)
 async def create_project(
     project_in: schemas.ProjectCreate,
@@ -29,7 +42,7 @@ async def create_project(
     session.add(membership)
     await session.commit()
 
-    return new_project
+    return await _to_project_read(new_project, session)
 
 
 @router.get("/", response_model=List[schemas.ProjectRead])
@@ -42,7 +55,8 @@ async def list_my_projects(
         .join(models.ProjectMember, models.ProjectMember.project_id == models.Project.id)
         .where(models.ProjectMember.user_id == current_user.id)
     )
-    return result.scalars().all()
+    projects = result.scalars().all()
+    return [await _to_project_read(p, session) for p in projects]
 
 
 @router.get("/{project_id}", response_model=schemas.ProjectRead)
@@ -64,7 +78,7 @@ async def get_project(
     if not result.scalars().first():
         raise HTTPException(status_code=403, detail="Not a member of this project")
 
-    return project
+    return await _to_project_read(project, session)
 
 
 @router.post("/{project_id}/members")

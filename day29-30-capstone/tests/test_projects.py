@@ -3,6 +3,7 @@ import pytest
 
 async def get_auth_headers(client, username="projectuser", password="testpass123"):
     await client.post("/auth/register", json={
+        "full_name": username,
         "username": username,
         "email": f"{username}@example.com",
         "password": password,

@@ -23,6 +23,25 @@ async def check_membership(project_id: int, user_id: int, session: AsyncSession)
         raise HTTPException(status_code=403, detail="Not a member of this project")
 
 
+async def _to_task_read(task: models.Task, session: AsyncSession) -> schemas.TaskRead:
+    assigned_username = None
+    if task.assigned_to:
+        assigned_user = await session.get(models.User, task.assigned_to)
+        assigned_username = assigned_user.username if assigned_user else None
+
+    return schemas.TaskRead(
+        id=task.id,
+        title=task.title,
+        description=task.description,
+        status=task.status,
+        priority=task.priority,
+        project_id=task.project_id,
+        assigned_to=task.assigned_to,
+        assigned_username=assigned_username,
+        created_at=task.created_at,
+    )
+
+
 @router.post("/", response_model=schemas.TaskRead)
 async def create_task(
     project_id: int,
@@ -35,6 +54,7 @@ async def create_task(
     new_task = models.Task(
         title=task_in.title,
         description=task_in.description,
+        priority=task_in.priority or "medium",
         project_id=project_id,
         assigned_to=task_in.assigned_to,
     )
@@ -47,7 +67,7 @@ async def create_task(
     except Exception:
         pass
 
-    return new_task
+    return await _to_task_read(new_task, session)
 
 
 @router.get("/", response_model=List[schemas.TaskRead])
@@ -78,14 +98,16 @@ async def list_tasks(
     result = await session.execute(query)
     tasks = result.scalars().all()
 
+    task_reads = [await _to_task_read(t, session) for t in tasks]
+
     try:
         await redis_client.setex(
-            cache_key, 30, json.dumps([schemas.TaskRead.model_validate(t).model_dump(mode="json") for t in tasks])
+            cache_key, 30, json.dumps([t.model_dump(mode="json") for t in task_reads])
         )
     except Exception:
         pass
 
-    return tasks
+    return task_reads
 
 
 @router.put("/{task_id}", response_model=schemas.TaskRead)
@@ -115,7 +137,7 @@ async def update_task(
     except Exception:
         pass
 
-    return task
+    return await _to_task_read(task, session)
 
 
 @router.delete("/{task_id}")
