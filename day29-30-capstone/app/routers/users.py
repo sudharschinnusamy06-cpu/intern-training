@@ -67,7 +67,6 @@ async def list_users(
         count = await _project_count(u.id, session)
         output.append({
             "id": u.id,
-            "full_name": u.full_name,
             "username": u.username,
             "email": u.email,
             "role": u.role,
@@ -75,3 +74,25 @@ async def list_users(
             "created_at": u.created_at,
         })
     return output
+
+@router.put("/{user_id}/role")
+async def update_user_role(
+    user_id: int,
+    role: str,
+    session: AsyncSession = Depends(get_session),
+    current_user: models.User = Depends(get_current_user),
+):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Only admin can change roles")
+
+    if role not in ("user", "manager", "admin"):
+        raise HTTPException(status_code=400, detail="Invalid role")
+
+    target_user = await session.get(models.User, user_id)
+    if not target_user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    target_user.role = role
+    session.add(target_user)
+    await session.commit()
+    return {"message": f"Role updated to {role}"}

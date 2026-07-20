@@ -6,7 +6,6 @@ from sqlmodel import SQLModel, Field, Relationship, UniqueConstraint
 class User(SQLModel, table=True):
     __tablename__ = "users"
     id: Optional[int] = Field(default=None, primary_key=True)
-    full_name: Optional[str] = None
     username: str = Field(nullable=False, unique=True)
     email: str = Field(unique=True)
     hashed_password: str

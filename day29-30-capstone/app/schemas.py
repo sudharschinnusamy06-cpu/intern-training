@@ -5,7 +5,6 @@ from pydantic import BaseModel, EmailStr
 
 # ---------- User ----------
 class UserCreate(BaseModel):
-    full_name: str
     username: str
     email: EmailStr
     password: str
@@ -13,7 +12,6 @@ class UserCreate(BaseModel):
 
 class UserRead(BaseModel):
     id: int
-    full_name: Optional[str]
     username: str
     email: str
     role: str
@@ -24,7 +22,6 @@ class UserRead(BaseModel):
 
 
 class UserUpdate(BaseModel):
-    full_name: Optional[str] = None
     email: Optional[EmailStr] = None
 
 
@@ -95,3 +92,8 @@ class DashboardStats(BaseModel):
     total_tasks: int
     completed_tasks: int
     pending_tasks: int
+
+class ProjectUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    status: Optional[str] = None
